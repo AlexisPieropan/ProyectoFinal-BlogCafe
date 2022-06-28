@@ -1,0 +1,402 @@
+/*se puede decir que asi es la manera de declarar variables en css en este caso colores fijos en hexadecimal*/
+:root {
+  --fuenteHeading: "PT sans", sans-serif;
+  --fuenteParrafos: "Open sans", sans-serif;
+  --primario: #784d3c;
+  --claro: #e1e1e1;
+  --blanco: #ffffff;
+  --negro: #000000;
+}
+
+/*EL DE HTML Y UNIVERSAL */
+html {
+  font-size: 62.5%; /*con esto se hace que 1rem=10px*/
+  box-sizing: border-box; /*soluciona el problema de los paddin para que sean exactos en el box size y no se pase*/
+}
+
+*,
+*:before,
+*:after {
+  /*utiliza el selector universal para no aplicar uno a uno la linea anterior*/
+  box-sizing: inherit; /*hereda del elemento padre el html*/
+}
+
+/*GLOBALES */
+body {
+  font-family: var(--fuenteParrafos);
+  font-size: 1.6rem;
+  line-height: 2;
+}
+
+p {
+  font-size: 1.8rem; /*equivalen a 18px*/
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--negro);
+}
+a {
+  text-decoration: none;
+}
+img {
+  /*se declaro esta global para hacer responsive las imagenes en dispositivos mas pequeños*/
+  max-width: 100%;
+}
+.contenedor {
+  max-width: 120rem; /*equivalen a 1200px*/
+  width: 90%;
+  margin: 0 auto; /*para centrar el contenido horizontalmente*/
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--fuenteHeading);
+  line-height: 1.2;
+}
+h1 {
+  font-size: 4.8rem;
+}
+h2 {
+  font-size: 4rem;
+}
+h3 {
+  font-size: 3.2rem;
+}
+h4 {
+  font-size: 2.8rem; /*28px*/
+}
+
+/*UTILIDADES*/
+.no-margin {
+  margin: 0;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.centrar-texto {
+  text-align: center;
+}
+
+/*HEADER*/
+
+.header {
+  background-image: url(../img/banner.jpg);
+  height: 60rem;
+  background-repeat: no-repeat;
+  background-size: cover; /*para que cubra todo la imagen*/
+  background-position: center center;
+}
+
+.header__texto {
+  text-align: center;
+  color: var(--blanco);
+  margin-top: 5rem;
+}
+.header__texto > p {
+  /*selecciona los elementos hijos 'p' que se encuentran en la clase dada y le asigna el atributo necesario*/
+  /* NOTA: esto se va a aplicar a todos los 'p' que sean hijos de dicha clase*/
+  color: var(--blanco); /*en este caso solo es un elemento por eso la solucion*/
+}
+
+@media (min-width: 768px) {
+  .header__texto {
+    margin-top: 15rem;
+  }
+}
+
+.barra {
+  padding: 4rem;
+}
+
+@media (min-width: 768px) {
+  .barra {
+    display: flex;
+    justify-content: space-between; /*para acomodar elemento horizontalmente*/
+    align-items: center; /*centra los elementos de manera vertical*/
+  }
+}
+
+.logo {
+  color: var(--blanco);
+}
+
+.logo__nombre {
+  font-weight: normal;
+}
+
+.logo__bold {
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .navegacion {
+    display: flex;
+    gap: 2rem;
+  }
+}
+
+.navegacion__enlace {
+  /*elemento "enlace" de navegacion*/
+  display: block;
+  text-align: center;
+  font-size: 1.8rem;
+  color: var(--blanco);
+}
+
+@media (min-width: 768px) {
+  .contenido-principal {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 4rem;
+  }
+}
+
+.entrada {
+  border-bottom: 1px solid var(--claro); /*ancho el tipo y el color del borde*/
+  margin-bottom: 2rem;
+}
+.entrada:last-of-type {
+  /*es un selector que sirve para decirle que al ultimo tipo que contiene esa clase se le apliquen ciertas propiedades*/
+  border: none;
+  margin-bottom: 0;
+}
+.boton {
+  display: block;
+  font-family: var(--fuenteHeading);
+  color: var(--blanco);
+  text-align: center;
+  padding: 1rem 3rem;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  border: none;
+}
+@media (min-width: 768px) {
+  .boton {
+    display: inline-block; /*toma el espacio que requiere pero a la hora que necesite un width o margin si lo va a tomar a diferencia del solo inline*/
+  }
+}
+.boton:hover {
+  cursor: pointer; /*este evento regresa el cursor al pasar por el boton*/
+}
+.boton--primario {
+  background-color: var(--negro);
+}
+.boton--secundario {
+  /*esta heredando de la clase boton pero el doble guion medio indica que algo va a cambiar pero se mantiene todo lo otro*/
+  background-color: var(
+    --primario
+  ); /*en este caso el color de fondo del boton*/
+}
+
+.cursos {
+  list-style: none;
+}
+.widget-curso {
+  border-bottom: 1px solid var(--claro);
+  margin-bottom: 2rem;
+}
+.widget-curso:last-of-type {
+  /*el ultimo tipo que contenga la clase tendra estos atributos */
+  border: none;
+  margin-bottom: 0;
+}
+
+.widget-curso__label {
+  font-family: var(--fuenteHeading);
+  font-weight: bold;
+}
+.widget-curso__info {
+  font-weight: normal;
+}
+.widget-curso__label,
+.widget-curso__info {
+  font-size: 2rem;
+}
+
+.footer {
+  background-color: var(--negro);
+  padding-bottom: 2rem;
+  margin-top: 4rem;
+}
+
+/*sobre nosotros*/
+
+@media (min-width: 768px) {
+  .sobre-nosotros {
+    display: flex;
+    gap: 2rem;
+  }
+  .sobre-nosotros__imagen,
+  .sobre-nosotros__texto {
+    flex-basis: 50%; /*es el width cuando se trabaja con flexbox para los elementos de la clase padre*/
+  }
+}
+
+/*CURSOS*/
+.curso {
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--claro); /*esto genera la linea de separacion*/
+}
+
+@media (min-width: 768px) {
+  .curso {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 2rem;
+  }
+}
+
+.curso:last-of-type {
+  /*el ultimo tipo que tenga la clase curso le agrega esas modificaciones*/
+  border: none;
+  margin-bottom: 0;
+}
+
+.curso__label {
+  font-family: var(--fuenteHeading);
+  font-weight: bold;
+}
+.curso__info {
+  font-weight: normal;
+}
+.curso__label,
+.curso__info {
+  font-size: 2rem;
+}
+
+/*CONTACTO*/
+
+.contacto-bg {
+  background-image: url(../img/contacto.jpg);
+  height: 40rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.formulario {
+  background-color: var(--blanco);
+  margin: -5rem auto 0 auto; /*50px hacia arriba*/
+  width: 95%;
+  padding: 5rem;
+}
+.campo {
+  display: flex;
+  margin-bottom: 2rem;
+}
+.campo__label {
+  flex: 0 0 9rem;
+  text-align: right;
+  padding-right: 2rem; /*se puede ocupar el gap en la clase campo tambien*/
+}
+
+.campo__field {
+  flex: 1;
+  border: 1px solid var(--claro);
+}
+
+.campo__field--textarea {
+  height: 20rem;
+}
+
+
+
+/*SOBRE EL DESARROLLADOR */
+
+.mapa iframe{
+  width: 100%;
+  height: auto;
+}
+@media (min-width:768px ){
+  .mapa iframe{
+    width: 1200px;
+    height: 400px;
+  }
+  
+}
+
+/*Se creo esta clase para poder acomodar los iconos (contenedor de los mismos)*/
+.desarrolladorIconos{
+  display: flex; /*ordenar horizontalmente*/
+  justify-content: space-around; /*que les de un cierto espacio*/
+  gap: .2rem;
+}
+@media (min-width: 768px){
+  .desarrolladorIconos {
+    gap: 4rem; 
+  }
+}
+
+
+/*ICONOS ANIMADOS (ANIMACIONES)*/
+.icono{
+  width: 8rem;
+  height: 8rem;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none; /*esta demas VER*/
+  font-size: 2.6rem;
+  color: #000000; /*color del SVG*/
+  border-radius: 50%;
+  outline: .3rem solid #000000;
+  transition-property:outline-color,
+  background-color;
+  transition-duration: .25s ;
+}
+
+
+  .icono:hover{
+    outline-offset: .4rem;
+  }
+  .icono:hover{
+    animation: shake .25s;
+  }
+  
+  .icono--github:hover{
+    background-color: #971fa7;
+    outline-color: #971fa7;
+  }
+  
+  .icono--linkedin:hover{
+    background-color: #1b69dd;
+    outline-color: #1b69dd;
+  }
+  
+  .icono--twitter:hover{
+    background-color: #0da0f5;
+    outline-color: #0da0f5;
+  }
+  
+  .icono--instagram:hover{
+    background-image:
+    radial-gradient(circle at 30% 107%,
+    #fdf497 0%, #fdf497 5%,#fd5949 45%, #d6249f 60%,
+    #285AEB 90%);
+    outline-color: #a02d76;
+  }
+
+  /*para poder realizar la rotacion en sentido horario y anti-horario*/
+@keyframes shake {
+  10%{transform: rotate(15deg)}
+  20%{transform: rotate(-15deg)}
+  30%{transform: rotate(15deg)}
+  40%{transform: rotate(-15deg)}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
