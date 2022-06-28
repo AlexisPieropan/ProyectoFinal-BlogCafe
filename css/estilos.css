@@ -1,4 +1,4 @@
-/*se puede decir que asi es la manera de declarar variables en css en este caso colores fijos en hexadecimal*/
+/*VARIABLES DECLARADAS*/
 :root {
   --fuenteHeading: "PT sans", sans-serif;
   --fuenteParrafos: "Open sans", sans-serif;
@@ -96,8 +96,7 @@ h4 {
 }
 .header__texto > p {
   /*selecciona los elementos hijos 'p' que se encuentran en la clase dada y le asigna el atributo necesario*/
-  /* NOTA: esto se va a aplicar a todos los 'p' que sean hijos de dicha clase*/
-  color: var(--blanco); /*en este caso solo es un elemento por eso la solucion*/
+  color: var(--blanco); 
 }
 
 @media (min-width: 768px) {
